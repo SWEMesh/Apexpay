@@ -59,6 +59,12 @@ public class WalletService {
             throw new AccountNotActiveException("Cannot transfer ! Sender account is: "+sender.getStatus());
         }
 
+        if (sender.getBalance() < amount) {
+            Transaction failedTx = new Transaction(transactionID, senderId, receiverId, amount, 0.0, TransactionStatus.FAILED, "Insufficient balance");
+            ledger.add(failedTx);
+            throw new InsufficientBalanceException("Cannot transfer ! Insufficient funds.");
+        }
+
         sender.deduct(amount);
         receiver.credit(amount);
 
@@ -70,14 +76,16 @@ public class WalletService {
 
     public void printUserLeger(String userId){
 
-        System.out.println("=== Bank statement for User: "+ userId + "===");
+        System.out.println("==== Bank statement for User: "+ userId + " ====");
         for(Transaction ldg : ledger){
 
-            if( ldg.getSenderId() == userId || ldg.getReceiverId() == userId){
+            if( ldg.getSenderId().equals(userId)  || ldg.getReceiverId().equals(userId)){
 
                 System.out.println("ID: "+ldg.getTransactionId() +
-                        " Amount: "+ldg.getAmount()+ "$" +
-                        " Status: " + ldg.getStatus());
+                        " -> "+ldg.getReceiverId()+
+                        "| Amount: "+ldg.getAmount()+ "$" +
+
+                        "| Status: " + ldg.getStatus());
             }
 
         }
@@ -88,11 +96,11 @@ public class WalletService {
 
         for(User user : users.values()){
 
-            System.out.println("------------------------------");
             System.out.println("ID: "+user.getUserId() +
                     "| Name: " + user.getCustomerName() +
                     "| Balance: "+ user.getBalance()+
                     "| Status: " + user.getStatus());
+
         }
     }
 

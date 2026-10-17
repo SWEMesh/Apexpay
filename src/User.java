@@ -6,12 +6,12 @@ public class User {
     private AccountStatus status;
 
 
-    public User(String userId, String customerName, String userEmail, double initialBalance){
+    public User(String userId, String customerName, String userEmail, double balance){
 
         this.userId = userId;
         this.customerName = customerName;
         this.userEmail = userEmail;
-        initialBalance = balance;
+        this.balance = balance;
         this.status = AccountStatus.ACTIVE;
     }
 

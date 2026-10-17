@@ -14,7 +14,7 @@ public class Transaction {
         this.receiverId = receiverId;
         this.amount = amount;
         this.transferFee = transferFee;
-        this.status = TransactionStatus.FAILED;
+        this.status = status;
         this.failureReason = failureReason;
     }
 

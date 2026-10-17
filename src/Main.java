@@ -12,7 +12,15 @@ public class Main {
         User user3 = new User("U3", "Sultan", "SultanMunstashri1@gmail.com", 500.0);
         wallet.registerUser(user3);
 
-        wallet.transfer("U1", "U2", 1500.0);
+        try {
+
+            wallet.transfer("U1", "U2", 1500.0);
+
+        } catch (InsufficientBalanceException e){
+
+            System.out.println("Transfer Failed: " +e.getMessage());
+        }
+
 
         try {
 
@@ -23,7 +31,7 @@ public class Main {
             System.out.println("Transfer Failed: " +e.getMessage());
         }
 
-
+        user2.setStatus(AccountStatus.FROZEN);
         try {
 
             wallet.transfer("U2", "U3", 400);
@@ -33,8 +41,9 @@ public class Main {
             System.out.println("Security Alert: " +e.getMessage());
 
         }
-
+        System.out.println("------------------------------");
         wallet.printSystemSummary();
+        System.out.println("------------------------------");
 
         wallet.printUserLeger("U1");
 
