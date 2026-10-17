@@ -45,7 +45,7 @@ public class Main {
         wallet.printSystemSummary();
         System.out.println("------------------------------");
 
-        wallet.printUserLeger("U1");
+        wallet.printUserLedger("U1");
 
 
     }

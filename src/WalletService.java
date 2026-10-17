@@ -27,16 +27,19 @@ public class WalletService {
     public void deposit(String userId, double amount){
 
         User user = users.get(userId);
-        if( amount <= 0)
+        if( amount <= 0) {
             throw new IllegalArgumentException("Deposit must be positive");
+        }
 
-        if (user == null)
+        if (user == null) {
             throw new IllegalArgumentException("User not found");
+        }
 
         user.credit(amount);
     }
 
     public Transaction transfer(String senderId, String receiverId, double amount){
+
         User sender = users.get(senderId);
         User receiver = users.get(receiverId);
 
@@ -74,7 +77,7 @@ public class WalletService {
         return successEx;
     }
 
-    public void printUserLeger(String userId){
+    public void printUserLedger(String userId){
 
         System.out.println("==== Bank statement for User: "+ userId + " ====");
         for(Transaction ldg : ledger){
@@ -87,9 +90,7 @@ public class WalletService {
 
                         "| Status: " + ldg.getStatus());
             }
-
         }
-
     }
 
     public void printSystemSummary(){
