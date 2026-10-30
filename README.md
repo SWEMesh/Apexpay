@@ -4,7 +4,7 @@
 [![Architecture](https://img.shields.io/badge/Architecture-Clean%20OOP%20%2F%20Domain--Driven-blue?style=for-the-badge)](https://en.wikipedia.org/wiki/Domain-driven_design)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-An in memory financial ledger and peer to peer (P2P) transaction engine built in **modern Java 21**. Inspired by real world digital payment platforms (such as **STC Pay** and **Apple Cash**), ApexPay enforces strict atomic balance mutations, fail-fast financial guard clauses, and an immutable audit trail.
+An in memory financial ledger and peer to peer (P2P) transaction engine built in **modern Java 21**. Inspired by real world digital payment platforms (such as **STC Pay** and **Apple Cash**), ApexPay enforces strict atomic balance mutations, fail fast financial guard clauses, and an immutable audit trail.
 
 ---
 
